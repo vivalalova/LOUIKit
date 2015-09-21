@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>124148B7-EC2C-481E-96E4-F95CBE23EBB9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>LOUIKit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FBFDE5303C78FB8E28D9E72B875FAD65A60B5C31</key>
+		<string>https://github.com/FUNTEKco/LOUIKit.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>LOUIKit.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FBFDE5303C78FB8E28D9E72B875FAD65A60B5C31</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/FUNTEKco/LOUIKit.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FBFDE5303C78FB8E28D9E72B875FAD65A60B5C31</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FBFDE5303C78FB8E28D9E72B875FAD65A60B5C31</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LOUIKit</string>
+		</dict>
+	</array>
+</dict>
+</plist>
