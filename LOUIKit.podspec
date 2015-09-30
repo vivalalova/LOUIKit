@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.name         = "LOUIKit"
   s.version      = '0.0.1'
-  s.summary      = "iOS UIKit extension"
+  s.summary      = "iOS UIKit extension" 
 
   s.description  = <<-DESC
                    A longer description of LOUIKit in Markdown format.
