@@ -53,7 +53,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "lova" => "lova@funtek.co" }
+  s.author             = { "vivalalova" => "vivalalova0@gmail.com" }
   # Or just: s.author    = "lova"
   # s.authors            = { "lova" => "lova@funtek.co" }
   # s.social_media_url   = "http://twitter.com/lova"
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/LOUIKit.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/vivalalova/LOUIKit", :tag => "0.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,10 +90,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "LOUIKit", "LOUIKit/LOUIKit/*.{h,m}"
+  s.exclude_files = "LOUIKit/Exclude"
 
-  # s.public_header_files = "Classes/**/*.h"
+  # s.public_header_files = "LOUIKit/LOUIKit/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
