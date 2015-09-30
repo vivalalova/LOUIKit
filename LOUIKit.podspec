@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "LOUIKit"
   s.version      = "0.0.1"
-  s.summary      = "A short description of LOUIKit."
+  s.summary      = "iOS UIKit extension"
 
   s.description  = <<-DESC
                    A longer description of LOUIKit in Markdown format.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.homepage     = "http://EXAMPLE/LOUIKit"
+  s.homepage     = "https://github.com/vivalalova/LOUIKit"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -54,9 +54,9 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "vivalalova" => "vivalalova0@gmail.com" }
-  # Or just: s.author    = "lova"
-  # s.authors            = { "lova" => "lova@funtek.co" }
-  # s.social_media_url   = "http://twitter.com/lova"
+  # Or just: s.author    = "vivalalova"
+  # s.authors            = { "vivalalova" => "vivalalova0@gmail.com" }
+  # s.social_media_url   = "http://twitter.com/vivalalova"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/vivalalova/LOUIKit", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/vivalalova/LOUIKit.git", :commit => "38dd068bf0c1f13a9bdf35e5a39ffb101ee00004" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,10 +90,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "LOUIKit", "LOUIKit/LOUIKit/*.{h,m}"
-  s.exclude_files = "LOUIKit/Exclude"
+  s.source_files  = "Classes", "Classes/**/*.{h,m}"
+  s.exclude_files = "Classes/Exclude"
 
-  # s.public_header_files = "LOUIKit/LOUIKit/*.h"
+  # s.public_header_files = "Classes/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
