@@ -18,7 +18,7 @@ IB_DESIGNABLE
 //from code
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setup];
     }
@@ -37,7 +37,7 @@ IB_DESIGNABLE
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
-    
+
     self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = self.borderWidth;
 }

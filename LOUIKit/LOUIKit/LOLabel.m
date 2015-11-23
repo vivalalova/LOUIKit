@@ -19,7 +19,7 @@ IB_DESIGNABLE
 //from code
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setup];
     }
@@ -36,7 +36,7 @@ IB_DESIGNABLE
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
-    
+
     if (self.blur && OSVersion >= 8.0) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         UIVisualEffectView *blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
@@ -44,7 +44,7 @@ IB_DESIGNABLE
         blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:blurredView];
         [self sendSubviewToBack:blurredView];
-        
+
         self.backgroundColor = [UIColor clearColor];
     } else if (self.blur && OSVersion < 8.0) {
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
@@ -55,5 +55,9 @@ IB_DESIGNABLE
     UIEdgeInsets insets = { self.padding.origin.x, self.padding.origin.y, self.padding.size.width, self.padding.size.height };
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
 }
+
+
+
+
 
 @end

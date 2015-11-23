@@ -24,7 +24,7 @@ IB_DESIGNABLE
 //from code
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setup];
     }
@@ -47,12 +47,12 @@ IB_DESIGNABLE
     UIView *paddingView = [[UIView alloc] initWithFrame:padding];
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
-    
+
     //place holder color
     if (placeHolderColor) {
         [self setValue:placeHolderColor forKeyPath:@"_placeholderLabel.textColor"];
     }
-    
+
     //border
     if (self.borderWidth) {
         self.layer.borderWidth = self.borderWidth;

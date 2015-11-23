@@ -24,6 +24,7 @@ IB_DESIGNABLE
 /**
  *  gradientLayer:  gradientLayer.colors to set gradient colors
  */
+@property (strong,nonatomic) NSArray <UIColor*>* gradientColors;
 @property (strong, nonatomic) CAGradientLayer *gradientLayer;
 
 - (void)setup;

@@ -12,7 +12,7 @@
 @interface LOCollectionView () {
     UIRefreshControl *refreshControl;
     BOOL lastStatusOfRefreshControl;
-    
+
     //    UIRefreshControl *bottomRefreshControl;
     BOOL bottomRefreshing;
     BOOL lastStatusOfBottomRefreshControl;
@@ -24,13 +24,13 @@
 @implementation LOCollectionView
 //@dynamic delegate;
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+
     if (self) {
         [self setUp];
     }
-    
+
     return self;
 }
 
@@ -48,17 +48,17 @@
             self.layer.masksToBounds = YES;
             self.layer.cornerRadius = self.cornerRadius;
         }
-        
+
         self.layer.borderColor = self.borderColor.CGColor;
         self.layer.borderWidth = self.borderWidth;
     }
-    
+
     /*pull and push refreshing*/ {
         if (!refreshControl && self.pullRefreshAllowed == YES) {
             refreshControl = [[UIRefreshControl alloc] init];
             [self addSubview:refreshControl];
         }
-        
+
         //下拉刷新 觸發delegate
         [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
     }
@@ -81,13 +81,13 @@
         } else {
             //			NSLog(@"enable 'pullRefreshAllowed' to allow pull refreshing");
         }
-        
+
         //未有動畫/*上拉刷新*/
         if (self.pushUpRefreshAllowed == YES) {
             if (bottomRefreshing == NO && self.contentOffset.y > self.contentSize.height - 400) {
                 bottomRefreshing = YES;
             }
-            
+
             if (lastStatusOfBottomRefreshControl == NO && bottomRefreshing == YES && self.pushUpRefreshAllowed == YES) {
                 if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartBottomRefresh:)]) {
                     [self.delegate LOCollectionViewDidStartBottomRefresh:self];
@@ -113,7 +113,7 @@
 
 - (void)setRefreshing:(BOOL)refreshing {
     _refreshing = refreshing;
-    
+
     if (_refreshing) {
         [refreshControl beginRefreshing];
         lastStatusOfRefreshControl = YES;
@@ -133,7 +133,7 @@
 
 - (NSIndexPath *)indexPathWithView:(UIView *)view {
     NSIndexPath *indexPath;
-    
+
     while (view.superview) {
         if ([view.superview isKindOfClass:[UICollectionViewCell class]]) {
             UICollectionViewCell *cell = (UICollectionViewCell *)view.superview;
@@ -143,7 +143,7 @@
             view = view.superview;
         }
     }
-    
+
     return indexPath;
 }
 

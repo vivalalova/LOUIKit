@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-
+#import "LOUIKit.h"
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet LOView *gratView;
 
 @end
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.gratView.gradientLayer.colors =  @[
+                                            [UIColor colorWithRed:0.99 green:0.82 blue:0.08 alpha:1],
+                                            [UIColor colorWithRed:0.56 green:0.08 blue:1 alpha:1]
+                                            ];
 }
 
 - (void)didReceiveMemoryWarning {

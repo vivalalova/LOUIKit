@@ -18,9 +18,9 @@
 @implementation LOView
 
 //from code
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    
+
     if (self) {
         [self setup];
     }
@@ -36,6 +36,8 @@
     [super layoutSubviews];
     self.gradientLayer.frame = self.bounds;
     blurredView.frame = self.bounds;
+    
+    [self setShadow];
 }
 
 - (void)setup {
@@ -50,7 +52,7 @@
     if (self.shadowRadius && self.shadowOpacity) {
         //performance
         self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
-        
+
         self.clipsToBounds = NO;
         self.layer.masksToBounds = NO;
         self.layer.shadowRadius = self.shadowRadius;
@@ -60,39 +62,34 @@
     }
 }
 
-- (void)setForCircleAndCornerRadius {
-    if (self.cornerRadius || self.circle) {
-        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
-        self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
-    }
-}
-
 #pragma mark - setter & getter
 
 - (void)setCircle:(BOOL)circle {
     _circle = circle;
-    [self setForCircleAndCornerRadius];
+    if (_circle == YES) {
+        self.layer.cornerRadius = self.frame.size.height / 2 ;
+    }
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     _cornerRadius = cornerRadius;
+    self.layer.cornerRadius = _cornerRadius;
 }
 
 - (void)setBlur:(BOOL)blur {
     _blur = blur;
-    
+
     if (self.blur == YES && OSVersion >= 8.0 && blurredView == nil) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        
+
         blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:blurredView];
         [self sendSubviewToBack:blurredView];
-        
+
         self.backgroundColor = [UIColor clearColor];
-        
+
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
     } else if (self.blur == YES && OSVersion < 8.0) {
@@ -118,6 +115,24 @@
     [self setShadow];
 }
 
+
+-(void)setGradientColors:(NSArray<UIColor *> *)gradientColors{
+    
+    if (!_gradientColors) {
+        _gradientColors = [[NSArray alloc]init];
+    }
+    
+    _gradientColors = gradientColors;
+    
+    
+    NSMutableArray* cgColors = [[NSMutableArray alloc]init];
+    [_gradientColors enumerateObjectsUsingBlock:^(UIColor * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [cgColors addObject:(id)obj.CGColor];
+    }];
+    
+    self.gradientLayer.colors = cgColors;
+}
+
 - (CAGradientLayer *)gradientLayer {
     if (!_gradientLayer) {
         _gradientLayer = [[CAGradientLayer alloc] init];
@@ -125,9 +140,9 @@
     //漸層方向
     _gradientLayer.startPoint = CGPointMake(0, 0);
     _gradientLayer.endPoint = CGPointMake(0, 1);
-    
+
     _gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    
+
     return _gradientLayer;
 }
 

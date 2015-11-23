@@ -21,6 +21,7 @@
 		9E9281A11AF9D524003D3471 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E92819F1AF9D524003D3471 /* Main.storyboard */; };
 		9E9281A31AF9D524003D3471 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9281A21AF9D524003D3471 /* Images.xcassets */; };
 		9E9281A61AF9D524003D3471 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E9281A41AF9D524003D3471 /* LaunchScreen.xib */; };
+		9EBED11A1BF196D3001B1526 /* LOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBED1191BF196D3001B1526 /* LOViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		9E9281A01AF9D524003D3471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E9281A21AF9D524003D3471 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9E9281A51AF9D524003D3471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		9EBED1181BF196D3001B1526 /* LOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LOViewController.h; path = LOUIKit/LOViewController.h; sourceTree = "<group>"; };
+		9EBED1191BF196D3001B1526 /* LOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LOViewController.m; path = LOUIKit/LOViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		9E5E4A311B03A98100E00F06 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				9EBED1181BF196D3001B1526 /* LOViewController.h */,
+				9EBED1191BF196D3001B1526 /* LOViewController.m */,
 				9E5E4A4F1B03AB3900E00F06 /* LOPrefixHeader.h */,
 				9E5E4A331B03A9B100E00F06 /* LOButton.h */,
 				9E5E4A341B03A9B100E00F06 /* LOButton.m */,
@@ -211,6 +216,7 @@
 			files = (
 				9E5E4A471B03A9B100E00F06 /* LOLabel.m in Sources */,
 				9E5E4A441B03A9B100E00F06 /* LOButton.m in Sources */,
+				9EBED11A1BF196D3001B1526 /* LOViewController.m in Sources */,
 				9E5E4A461B03A9B100E00F06 /* LOImageView.m in Sources */,
 				9E5E4A4B1B03A9B100E00F06 /* LOView.m in Sources */,
 				9E92819E1AF9D524003D3471 /* ViewController.m in Sources */,
