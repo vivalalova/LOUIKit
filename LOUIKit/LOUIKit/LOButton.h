@@ -9,11 +9,6 @@
 #import <UIKit/UIKit.h>
 @interface LOButton : UIButton
 
-//@property (assign, nonatomic) IBInspectable UIColor* enableTitleColor;
-//@property (assign, nonatomic) IBInspectable UIColor* disableTitleColor;
-//@property (assign, nonatomic) IBInspectable UIColor* enableBGColor;
-//@property (assign, nonatomic) IBInspectable UIColor* disableBGColor;
-
 @property (assign, nonatomic) IBInspectable BOOL circle;
 
 @property (strong, nonatomic) IBInspectable UIColor *borderColor;

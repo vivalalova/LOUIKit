@@ -7,19 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+
 IB_DESIGNABLE
 
 @interface LOView : UIView
 
-@property (assign, nonatomic) IBInspectable BOOL circle;
-@property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
-@property (assign, nonatomic) IBInspectable BOOL blur;
-//@property (assign, nonatomic) UIBlurEffectStyle blurEffectStyle;
-
 //shadow
 @property (assign, nonatomic) IBInspectable CGFloat shadowRadius;
 @property (assign, nonatomic) IBInspectable CGFloat shadowOpacity;
-@property (assign, nonatomic) IBInspectable CGSize shadowOffset;
+@property (assign, nonatomic) IBInspectable CGPoint shadowOffset;
+
+@property (assign, nonatomic) IBInspectable BOOL circle;
+@property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
+
+@property (nonatomic, assign) IBInspectable NSInteger blurStyle;
+@property (assign, nonatomic) IBInspectable BOOL blur;
 
 /**
  *  gradientLayer:  gradientLayer.colors to set gradient colors

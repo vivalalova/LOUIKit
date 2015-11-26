@@ -34,32 +34,32 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self setUp];
+}
+
 - (void)prepareForInterfaceBuilder {
     [super prepareForInterfaceBuilder];
     [self setUp];
 }
 
 - (void)setUp {
-    /*cornerRadus & border*/ {
-        if (self.cornerRadius) {
-            self.clipsToBounds = YES;
-            self.layer.masksToBounds = YES;
-            self.layer.cornerRadius = self.cornerRadius;
-        }
 
-        self.layer.borderColor = self.borderColor.CGColor;
-        self.layer.borderWidth = self.borderWidth;
+    self.clipsToBounds = YES;
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = self.cornerRadius;
+    self.layer.borderColor = self.borderColor.CGColor;
+    self.layer.borderWidth = self.borderWidth;
+
+    /*pull and push refreshing*/
+    if (!refreshControl && self.pullRefreshAllowed == YES) {
+        refreshControl = [[UIRefreshControl alloc] init];
+        [self addSubview:refreshControl];
     }
 
-    /*pull and push refreshing*/ {
-        if (!refreshControl && self.pullRefreshAllowed == YES) {
-            refreshControl = [[UIRefreshControl alloc] init];
-            [self addSubview:refreshControl];
-        }
-
-        //下拉刷新 觸發delegate
-        [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
-    }
+    //下拉刷新 觸發delegate
+    [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
 }
 
 - (void)dealloc {
@@ -118,6 +118,7 @@
     bottomRefreshing = NO;
 }
 
+
 #pragma mark - setter
 
 - (void)setPullRefreshAllowed:(BOOL)pullRefreshAllowed {
@@ -142,5 +143,6 @@
         lastStatusOfRefreshControl = NO;
     }
 }
+
 
 @end
