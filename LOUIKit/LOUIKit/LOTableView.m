@@ -69,6 +69,11 @@
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
+
+            if (self.contentOffset.y < -100) {
+                [refreshControl beginRefreshing];
+            }
+            
             if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                                     // 表示剛開始
                 if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartRefreshAnimation:)]) {
                     [self.delegate LOTableViewDidStartRefreshAnimation:self];
