@@ -10,7 +10,6 @@
 #import "LOPrefixHeader.h"
 
 @interface LOView () {
-
 }
 @property (nonatomic, strong)  UIVisualEffectView *blurredView;
 @end
@@ -21,7 +20,7 @@
 //from code
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-
+    
     if (self) {
         [self setup];
     }
@@ -37,7 +36,7 @@
     [super layoutSubviews];
     self.gradientLayer.frame = self.bounds;
     self.blurredView.frame = self.bounds;
-
+    
     [self setShadow];
 }
 
@@ -56,7 +55,7 @@
     self.layer.shadowRadius = self.cornerRadius;
     self.layer.shadowColor = [UIColor blackColor].CGColor;
     self.layer.shadowOpacity = self.shadowOpacity;
-    self.layer.shadowOffset = CGSizeMake(self.shadowOffset.x,self.shadowOffset.y);
+    self.layer.shadowOffset = CGSizeMake(self.shadowOffset.x, self.shadowOffset.y);
 }
 
 #pragma mark - setter & getter
@@ -73,21 +72,31 @@
     self.layer.cornerRadius = _cornerRadius;
 }
 
+- (void)setBorderColor:(UIColor *)borderColor {
+    _borderColor = borderColor;
+    self.layer.borderColor = borderColor.CGColor;
+}
+
+- (void)setBorderWidth:(CGFloat)borderWidth {
+    _borderWidth = borderWidth;
+    self.layer.borderWidth = borderWidth;
+}
+
 - (void)setBlur:(BOOL)blur {
     _blur = blur;
-
+    
     if (self.blur == YES && OSVersion >= 8.0 && self.blurredView == nil) {
         UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:self.blurStyle];
-
+        
         self.blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         self.blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
         self.blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+        
         [self addSubview:self.blurredView];
         [self sendSubviewToBack:self.blurredView];
-
+        
         self.backgroundColor = [UIColor clearColor];
-
+        
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
     } else if (self.blur == YES && OSVersion < 8.0) {
@@ -117,14 +126,14 @@
     if (!_gradientColors) {
         _gradientColors = [[NSArray alloc] init];
     }
-
+    
     _gradientColors = gradientColors;
-
+    
     NSMutableArray *cgColors = [[NSMutableArray alloc] init];
     [_gradientColors enumerateObjectsUsingBlock:^(UIColor *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
         [cgColors addObject:(id)obj.CGColor];
     }];
-
+    
     self.gradientLayer.colors = cgColors;
 }
 
@@ -135,17 +144,15 @@
     //漸層方向
     _gradientLayer.startPoint = CGPointMake(0, 0);
     _gradientLayer.endPoint = CGPointMake(0, 1);
-
+    
     _gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-
+    
     return _gradientLayer;
 }
 
-
-
--(void)setBlurStyle:(NSInteger)newBlurStyle{
+- (void)setBlurStyle:(NSInteger)newBlurStyle {
     blurStyle = newBlurStyle;
-
+    
     if (self.blurredView) {
         //remove and new
         self.blur = NO;
@@ -153,12 +160,13 @@
     }
 }
 
--(NSInteger)blurStyle{
+- (NSInteger)blurStyle {
     switch (blurStyle) {
         case UIBlurEffectStyleExtraLight:
         case UIBlurEffectStyleLight:
         case UIBlurEffectStyleDark:
             break;
+            
         default:
             blurStyle = 2;
             break;

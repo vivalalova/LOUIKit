@@ -20,13 +20,16 @@ IB_DESIGNABLE
 @property (assign, nonatomic) IBInspectable BOOL circle;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 
+@property (strong, nonatomic) IBInspectable UIColor *borderColor;
+@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
+
 @property (nonatomic, assign) IBInspectable NSInteger blurStyle;
 @property (assign, nonatomic) IBInspectable BOOL blur;
 
 /**
  *  gradientLayer:  gradientLayer.colors to set gradient colors
  */
-@property (strong,nonatomic) NSArray <UIColor*>* gradientColors;
+@property (strong, nonatomic) NSArray <UIColor *> *gradientColors;
 @property (strong, nonatomic) CAGradientLayer *gradientLayer;
 
 - (void)setup;

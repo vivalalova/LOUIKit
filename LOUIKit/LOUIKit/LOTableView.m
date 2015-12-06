@@ -14,7 +14,7 @@
 @interface LOTableView () {
     UIRefreshControl *refreshControl;
     BOOL lastStatusOfRefreshControl;
-
+    
     //    UIRefreshControl *bottomRefreshControl;
     BOOL bottomRefreshing;
     BOOL lastStatusOfBottomRefreshControl;
@@ -26,11 +26,14 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-
+    
     if (self) {
         [self setUp];
+        
+        //下拉刷新 觸發delegate
+        [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
     }
-
+    
     return self;
 }
 
@@ -45,21 +48,17 @@
 }
 
 - (void)setUp {
-
     self.clipsToBounds = YES;
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = self.cornerRadius;
     self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = self.borderWidth;
-
+    
     /*pull and push refreshing*/
     if (!refreshControl && self.pullRefreshAllowed == YES) {
         refreshControl = [[UIRefreshControl alloc] init];
         [self addSubview:refreshControl];
     }
-
-    //下拉刷新 觸發delegate
-    [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
 }
 
 - (void)dealloc {
@@ -70,7 +69,7 @@
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
-            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                       // 表示剛開始
+            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                                     // 表示剛開始
                 if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartRefreshAnimation:)]) {
                     [self.delegate LOTableViewDidStartRefreshAnimation:self];
                 }
@@ -79,19 +78,19 @@
         } else {
             //            NSLog(@"enable 'pullRefreshAllowed' to allow pull refreshing");
         }
-
+        
         //未有動畫/*上拉刷新*/
         if (self.pushUpRefreshAllowed == YES) {
             if (bottomRefreshing == NO && (self.contentSize.height - self.contentOffset.y) < 500) {
                 bottomRefreshing = YES;
-
+                
                 if (lastStatusOfBottomRefreshControl == NO) {
                     if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartBottomRefresh:)]) {
                         [self.delegate LOTableViewDidStartBottomRefresh:self];
                     }
                 }
             }
-
+            
             lastStatusOfBottomRefreshControl = bottomRefreshing;
         } else {
             //            NSLog(@"enable 'pushUpRefreshAllowed' to allow pull refreshing");
@@ -104,9 +103,9 @@
 - (NSIndexPath *)indexpathOfCellWithView:(UIView *)sender {
     CGPoint center = [sender convertPoint:sender.center toView:self];
     center.x = self.bounds.size.width / 2;
-
+    
     NSIndexPath *indexpath = [self indexPathForRowAtPoint:center];
-
+    
     return indexpath;
 }
 
@@ -117,7 +116,6 @@
 - (void)endBottomRefreshing {
     bottomRefreshing = NO;
 }
-
 
 #pragma mark - setter
 
@@ -134,7 +132,7 @@
 
 - (void)setRefreshing:(BOOL)refreshing {
     _refreshing = refreshing;
-
+    
     if (_refreshing) {
         [refreshControl beginRefreshing];
         lastStatusOfRefreshControl = YES;
@@ -143,6 +141,5 @@
         lastStatusOfRefreshControl = NO;
     }
 }
-
 
 @end

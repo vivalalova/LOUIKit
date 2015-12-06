@@ -12,7 +12,7 @@
 @interface LOCollectionView () {
     UIRefreshControl *refreshControl;
     BOOL lastStatusOfRefreshControl;
-
+    
     //    UIRefreshControl *bottomRefreshControl;
     BOOL bottomRefreshing;
     BOOL lastStatusOfBottomRefreshControl;
@@ -23,14 +23,19 @@
 
 @implementation LOCollectionView
 //@dynamic delegate;
+#define kContentOffset @"contentOffset"
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-
+    
     if (self) {
         [self setUp];
-    }
+        
+        //下拉刷新 觸發delegate
+        [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
 
+    }
+    
     return self;
 }
 
@@ -39,7 +44,6 @@
     [self setUp];
 }
 
-#define kContentOffset @"contentOffset"
 
 - (void)setUp {
     /*cornerRadus & border*/ {
@@ -48,19 +52,17 @@
             self.layer.masksToBounds = YES;
             self.layer.cornerRadius = self.cornerRadius;
         }
-
+        
         self.layer.borderColor = self.borderColor.CGColor;
         self.layer.borderWidth = self.borderWidth;
     }
-
+    
     /*pull and push refreshing*/ {
         if (!refreshControl && self.pullRefreshAllowed == YES) {
             refreshControl = [[UIRefreshControl alloc] init];
             [self addSubview:refreshControl];
         }
-
-        //下拉刷新 觸發delegate
-        [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
+        
     }
 }
 
@@ -72,7 +74,7 @@
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
-            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                 // 表示剛開始
+            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                   // 表示剛開始
                 if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartRefreshAnimation:)]) {
                     [self.delegate LOCollectionViewDidStartRefreshAnimation:self];
                 }
@@ -81,13 +83,13 @@
         } else {
             //			NSLog(@"enable 'pullRefreshAllowed' to allow pull refreshing");
         }
-
+        
         //未有動畫/*上拉刷新*/
         if (self.pushUpRefreshAllowed == YES) {
             if (bottomRefreshing == NO && self.contentOffset.y > self.contentSize.height - 400) {
                 bottomRefreshing = YES;
             }
-
+            
             if (lastStatusOfBottomRefreshControl == NO && bottomRefreshing == YES && self.pushUpRefreshAllowed == YES) {
                 if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartBottomRefresh:)]) {
                     [self.delegate LOCollectionViewDidStartBottomRefresh:self];
@@ -113,7 +115,7 @@
 
 - (void)setRefreshing:(BOOL)refreshing {
     _refreshing = refreshing;
-
+    
     if (_refreshing) {
         [refreshControl beginRefreshing];
         lastStatusOfRefreshControl = YES;
@@ -133,7 +135,7 @@
 
 - (NSIndexPath *)indexPathWithView:(UIView *)view {
     NSIndexPath *indexPath;
-
+    
     while (view.superview) {
         if ([view.superview isKindOfClass:[UICollectionViewCell class]]) {
             UICollectionViewCell *cell = (UICollectionViewCell *)view.superview;
@@ -143,7 +145,7 @@
             view = view.superview;
         }
     }
-
+    
     return indexPath;
 }
 

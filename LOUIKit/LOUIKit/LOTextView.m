@@ -25,7 +25,7 @@
 //from code
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-
+    
     if (self) {
         [self setup];
     }
@@ -45,15 +45,15 @@
 
 - (void)setup {
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
-
+    
     if (self.cornerRadius) {
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
-
+    
     self.contentInset = UIEdgeInsetsMake(padding.origin.x, padding.origin.y, padding.size.width, padding.size.height);
-
+    
     //    place holder
     /*
      * placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 + padding.origin.x,
