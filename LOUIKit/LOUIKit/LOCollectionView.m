@@ -33,7 +33,6 @@
         
         //下拉刷新 觸發delegate
         [self addObserver:self forKeyPath:kContentOffset options:NSKeyValueObservingOptionOld context:nil];
-
     }
     
     return self;
@@ -43,7 +42,6 @@
     [super prepareForInterfaceBuilder];
     [self setUp];
 }
-
 
 - (void)setUp {
     /*cornerRadus & border*/ {
@@ -62,7 +60,6 @@
             refreshControl = [[UIRefreshControl alloc] init];
             [self addSubview:refreshControl];
         }
-        
     }
 }
 
@@ -74,7 +71,7 @@
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
-            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                   // 表示剛開始
+            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                               // 表示剛開始
                 if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartRefreshAnimation:)]) {
                     [self.delegate LOCollectionViewDidStartRefreshAnimation:self];
                 }

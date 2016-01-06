@@ -8,11 +8,9 @@
 
 #import "LOViewController.h"
 
-
-
 @implementation LOViewController
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableview.rowHeight = UITableViewAutomaticDimension;
@@ -25,7 +23,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AFNetworkReachabilityStatusReachableON) name:@"AFNetworkReachabilityStatusReachableON" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AFNetworkReachabilityStatusReachableOFF) name:@"AFNetworkReachabilityStatusReachableOFF" object:nil];
 }
@@ -33,11 +31,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
-
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AFNetworkReachabilityStatusReachableON" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AFNetworkReachabilityStatusReachableOFF" object:nil];
-
-//    [SVProgressHUD dismiss];
+    
+    //    [SVProgressHUD dismiss];
 }
 
 #pragma mark - reachability
@@ -58,28 +56,25 @@
 - (void)keyboardWillChangeToFrame:(CGRect)frame duration:(CGFloat)duration {
 }
 
-
 #pragma mark - UITableViewDelegate
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     return cell;
 }
 
-
 #pragma mark - getter
 
--(NSMutableArray *)dataSource{
+- (NSMutableArray *)dataSource {
     if (!_dataSource) {
-        _dataSource = [[NSMutableArray alloc]init];
+        _dataSource = [[NSMutableArray alloc] init];
     }
     
     return _dataSource;
 }
-
 
 @end

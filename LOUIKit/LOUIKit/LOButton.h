@@ -18,6 +18,5 @@
 - (void)setup;
 
 @property (nonatomic, assign) BOOL lock;
-- (void)setLock:(BOOL)lock withTitle:(NSString *)title;
-
+- (void)setLock:(BOOL)lock withTitle:(NSString *)title color:(UIColor *)color;
 @end

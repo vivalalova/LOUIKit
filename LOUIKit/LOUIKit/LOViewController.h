@@ -10,9 +10,8 @@
 
 @interface LOViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong,nonatomic) NSMutableArray* dataSource;
+@property (strong, nonatomic) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
 
 - (void)keyboardWillChangeToFrame:(CGRect)frame duration:(CGFloat)duration;
 

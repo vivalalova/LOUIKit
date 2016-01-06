@@ -23,6 +23,7 @@
 @end
 
 @implementation LOTableView
+@synthesize refreshing;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -69,12 +70,12 @@
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
-
             if (self.contentOffset.y < -100) {
                 [refreshControl beginRefreshing];
             }
             
-            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                                     // 表示剛開始
+            if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {// 表示剛開始
+                self.refreshing = YES;
                 if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartRefreshAnimation:)]) {
                     [self.delegate LOTableViewDidStartRefreshAnimation:self];
                 }
@@ -135,15 +136,20 @@
     }
 }
 
-- (void)setRefreshing:(BOOL)refreshing {
-    _refreshing = refreshing;
-    
-    if (_refreshing) {
-        [refreshControl beginRefreshing];
-        lastStatusOfRefreshControl = YES;
-    } else {
-        [refreshControl endRefreshing];
-        lastStatusOfRefreshControl = NO;
+- (void)setRefreshing:(BOOL)newRefreshing {
+    NSLog(@"set %d",newRefreshing);
+    NSLog(@"set %d",refreshing);
+
+    if (refreshing != newRefreshing) {
+        if (refreshing) {
+            [refreshControl endRefreshing];
+            lastStatusOfRefreshControl = NO;
+        } else {
+            [refreshControl beginRefreshing];
+            lastStatusOfRefreshControl = YES;
+        }
+        
+        refreshing = newRefreshing;
     }
 }
 

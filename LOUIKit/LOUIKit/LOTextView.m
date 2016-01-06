@@ -53,7 +53,7 @@
     }
     
     self.contentInset = UIEdgeInsetsMake(padding.origin.x, padding.origin.y, padding.size.width, padding.size.height);
-
+    
     //    place holder
     /*
      * placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 + padding.origin.x,

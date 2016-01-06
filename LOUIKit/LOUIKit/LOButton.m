@@ -57,10 +57,17 @@ IB_DESIGNABLE
 }
 
 - (void)setLock:(BOOL)lock {
-    [self setLock:lock withTitle:self.tempTitle];
+    UIColor *color;
+    if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
+        color = [UIColor lightGrayColor];
+    } else {
+        color = [UIColor whiteColor];
+    }
+    
+    [self setLock:lock withTitle:self.tempTitle color:color];
 }
 
-- (void)setLock:(BOOL)lock withTitle:(NSString *)title {
+- (void)setLock:(BOOL)lock withTitle:(NSString *)title color:(UIColor *)color {
     dispatch_async(dispatch_get_main_queue(), ^{
         _lock = lock;
         
@@ -74,11 +81,9 @@ IB_DESIGNABLE
             self.tempTitle = self.titleLabel.text;
             [self setTitle:@"" forState:UIControlStateNormal];
             
-            self.tempBorderWidth = self.layer.borderWidth;
-            self.layer.borderWidth = 0;
-            
-            //            self.tempBackGroundColor = self.backgroundColor;
-            //            self.backgroundColor = [UIColor clearColor];
+            //            self.tempBorderWidth = self.layer.borderWidth;
+            //            self.layer.borderWidth = 0;
+            indicator.color = color;
             
             self.userInteractionEnabled = NO;
         } else {
@@ -90,11 +95,9 @@ IB_DESIGNABLE
             [self setTitle:self.tempTitle forState:UIControlStateNormal];
             self.tempTitle = nil;
             
-            self.layer.borderWidth = self.tempBorderWidth;
-            self.tempBorderWidth = 0;
-            
-            //            self.backgroundColor = self.tempBackGroundColor;
-            //            self.tempBackGroundColor = nil;
+            //            self.layer.borderWidth = self.tempBorderWidth;
+            //            self.tempBorderWidth = 0;
+            indicator.color = color;
             
             self.userInteractionEnabled = YES;
         }
@@ -114,17 +117,20 @@ IB_DESIGNABLE
 - (UIActivityIndicatorView *)indicator {
     if (!indicator) {
         indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        indicator = [[UIActivityIndicatorView alloc] init];
         indicator.userInteractionEnabled = NO;
         indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-        [indicator startAnimating];
+        //        [indicator startAnimating];
         [self addSubview:indicator];
     }
     
-    if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
-        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    } else {
-        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    }
+    //    indicator.color = self.borderColor;
+    
+    //    if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
+    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    //    } else {
+    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+    //    }
     
     return indicator;
 }
