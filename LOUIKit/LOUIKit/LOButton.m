@@ -36,24 +36,14 @@ IB_DESIGNABLE
     [self setup];
 }
 
-- (void)setup {
-    self.titleLabel.numberOfLines = 20;
-    [self drawRect:self.frame];
-    
-    if (self.cornerRadius || self.circle) {
-        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
-        self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
-    }
-    
-    self.layer.borderColor = self.borderColor.CGColor;
-    self.layer.borderWidth = self.borderWidth;
-    
-    self.enabled = self.enabled;
-}
+
 
 - (void)prepareForInterfaceBuilder {
     [self setup];
+}
+
+- (void)setup {
+    
 }
 
 - (void)setLock:(BOOL)lock {
@@ -81,8 +71,6 @@ IB_DESIGNABLE
             self.tempTitle = self.titleLabel.text;
             [self setTitle:@"" forState:UIControlStateNormal];
             
-            //            self.tempBorderWidth = self.layer.borderWidth;
-            //            self.layer.borderWidth = 0;
             indicator.color = color;
             
             self.userInteractionEnabled = NO;
@@ -95,23 +83,11 @@ IB_DESIGNABLE
             [self setTitle:self.tempTitle forState:UIControlStateNormal];
             self.tempTitle = nil;
             
-            //            self.layer.borderWidth = self.tempBorderWidth;
-            //            self.tempBorderWidth = 0;
             indicator.color = color;
             
             self.userInteractionEnabled = YES;
         }
     });
-}
-
-- (void)setBorderColor:(UIColor *)borderColor {
-    _borderColor = borderColor;
-    self.layer.borderColor = borderColor.CGColor;
-}
-
-- (void)setBorderWidth:(CGFloat)borderWidth {
-    _borderWidth = borderWidth;
-    self.layer.borderWidth = borderWidth;
 }
 
 - (UIActivityIndicatorView *)indicator {
@@ -123,14 +99,6 @@ IB_DESIGNABLE
         //        [indicator startAnimating];
         [self addSubview:indicator];
     }
-    
-    //    indicator.color = self.borderColor;
-    
-    //    if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
-    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    //    } else {
-    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    //    }
     
     return indicator;
 }

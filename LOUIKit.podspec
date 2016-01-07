@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.source_files  = "LOUIKit/LOUIKit/*.{h,m}"
   s.framework   = 'UIKit'
   s.requires_arc = true
+  s.dependency 'Masonry', '~> 0.6.4'
 end

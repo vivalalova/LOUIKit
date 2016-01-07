@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CCE490F310282D09002FBB2 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74DE490E8097A12CB0E2642B /* Pods.framework */; };
+		9E311B661C3E5CA60031FB51 /* UIView+IBDesignable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E311B651C3E5CA60031FB51 /* UIView+IBDesignable.m */; };
 		9E5E4A441B03A9B100E00F06 /* LOButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E4A341B03A9B100E00F06 /* LOButton.m */; };
 		9E5E4A451B03A9B100E00F06 /* LOCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E4A361B03A9B100E00F06 /* LOCollectionView.m */; };
 		9E5E4A461B03A9B100E00F06 /* LOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E4A381B03A9B100E00F06 /* LOImageView.m */; };
@@ -22,9 +24,15 @@
 		9E9281A31AF9D524003D3471 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9281A21AF9D524003D3471 /* Images.xcassets */; };
 		9E9281A61AF9D524003D3471 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E9281A41AF9D524003D3471 /* LaunchScreen.xib */; };
 		9EBED11A1BF196D3001B1526 /* LOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EBED1191BF196D3001B1526 /* LOViewController.m */; };
+		9EC9F65F1C3E5E7D001476BA /* testView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC9F65E1C3E5E7D001476BA /* testView.m */; };
+		9EF08EB81C3E5F79001A1949 /* LOBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF08EB71C3E5F79001A1949 /* LOBaseView.m */; };
+		9EF08EBB1C3E6217001A1949 /* testButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF08EBA1C3E6217001A1949 /* testButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74DE490E8097A12CB0E2642B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E311B641C3E5CA60031FB51 /* UIView+IBDesignable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+IBDesignable.h"; path = "LOUIKit/UIView+IBDesignable.h"; sourceTree = "<group>"; };
+		9E311B651C3E5CA60031FB51 /* UIView+IBDesignable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+IBDesignable.m"; path = "LOUIKit/UIView+IBDesignable.m"; sourceTree = "<group>"; };
 		9E5E4A331B03A9B100E00F06 /* LOButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LOButton.h; path = LOUIKit/LOButton.h; sourceTree = "<group>"; };
 		9E5E4A341B03A9B100E00F06 /* LOButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LOButton.m; path = LOUIKit/LOButton.m; sourceTree = "<group>"; };
 		9E5E4A351B03A9B100E00F06 /* LOCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LOCollectionView.h; path = LOUIKit/LOCollectionView.h; sourceTree = "<group>"; };
@@ -55,6 +63,14 @@
 		9E9281A51AF9D524003D3471 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9EBED1181BF196D3001B1526 /* LOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LOViewController.h; path = LOUIKit/LOViewController.h; sourceTree = "<group>"; };
 		9EBED1191BF196D3001B1526 /* LOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LOViewController.m; path = LOUIKit/LOViewController.m; sourceTree = "<group>"; };
+		9EC9F65D1C3E5E7D001476BA /* testView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testView.h; sourceTree = "<group>"; };
+		9EC9F65E1C3E5E7D001476BA /* testView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testView.m; sourceTree = "<group>"; };
+		9EF08EB61C3E5F79001A1949 /* LOBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LOBaseView.h; sourceTree = "<group>"; };
+		9EF08EB71C3E5F79001A1949 /* LOBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LOBaseView.m; sourceTree = "<group>"; };
+		9EF08EB91C3E6217001A1949 /* testButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testButton.h; sourceTree = "<group>"; };
+		9EF08EBA1C3E6217001A1949 /* testButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testButton.m; sourceTree = "<group>"; };
+		B71630976F6CCF50158ED0B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D60324E45CBF51A8D706A386 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +78,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCE490F310282D09002FBB2 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D255F9A6C070FD551EA1692 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74DE490E8097A12CB0E2642B /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41A72DA621F0725D5DB50B0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D60324E45CBF51A8D706A386 /* Pods.debug.xcconfig */,
+				B71630976F6CCF50158ED0B4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9E5E4A311B03A98100E00F06 /* class */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +125,8 @@
 				9E5E4A411B03A9B100E00F06 /* LOUIKit.h */,
 				9E5E4A421B03A9B100E00F06 /* LOView.h */,
 				9E5E4A431B03A9B100E00F06 /* LOView.m */,
+				9E311B641C3E5CA60031FB51 /* UIView+IBDesignable.h */,
+				9E311B651C3E5CA60031FB51 /* UIView+IBDesignable.m */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -106,6 +142,12 @@
 				9E9281A21AF9D524003D3471 /* Images.xcassets */,
 				9E9281A41AF9D524003D3471 /* LaunchScreen.xib */,
 				9E9281951AF9D524003D3471 /* Supporting Files */,
+				9EC9F65D1C3E5E7D001476BA /* testView.h */,
+				9EC9F65E1C3E5E7D001476BA /* testView.m */,
+				9EF08EB61C3E5F79001A1949 /* LOBaseView.h */,
+				9EF08EB71C3E5F79001A1949 /* LOBaseView.m */,
+				9EF08EB91C3E6217001A1949 /* testButton.h */,
+				9EF08EBA1C3E6217001A1949 /* testButton.m */,
 			);
 			name = example;
 			sourceTree = "<group>";
@@ -115,6 +157,8 @@
 			children = (
 				9E9281941AF9D524003D3471 /* LOUIKit */,
 				9E9281931AF9D524003D3471 /* Products */,
+				41A72DA621F0725D5DB50B0F /* Pods */,
+				0D255F9A6C070FD551EA1692 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E9281B51AF9D524003D3471 /* Build configuration list for PBXNativeTarget "LOUIKit" */;
 			buildPhases = (
+				E8B0194C7B7085C0A44CF66D /* Check Pods Manifest.lock */,
 				9E92818E1AF9D524003D3471 /* Sources */,
 				9E92818F1AF9D524003D3471 /* Frameworks */,
 				9E9281901AF9D524003D3471 /* Resources */,
+				82838DD3389A1FF5AE8CDF2B /* Embed Pods Frameworks */,
+				58DC87E9C04DB7B37849F224 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +256,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		58DC87E9C04DB7B37849F224 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82838DD3389A1FF5AE8CDF2B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8B0194C7B7085C0A44CF66D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9E92818E1AF9D524003D3471 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,12 +312,16 @@
 				9E5E4A471B03A9B100E00F06 /* LOLabel.m in Sources */,
 				9E5E4A441B03A9B100E00F06 /* LOButton.m in Sources */,
 				9EBED11A1BF196D3001B1526 /* LOViewController.m in Sources */,
+				9EF08EBB1C3E6217001A1949 /* testButton.m in Sources */,
 				9E5E4A461B03A9B100E00F06 /* LOImageView.m in Sources */,
 				9E5E4A4B1B03A9B100E00F06 /* LOView.m in Sources */,
 				9E92819E1AF9D524003D3471 /* ViewController.m in Sources */,
+				9E311B661C3E5CA60031FB51 /* UIView+IBDesignable.m in Sources */,
 				9E92819B1AF9D524003D3471 /* AppDelegate.m in Sources */,
+				9EF08EB81C3E5F79001A1949 /* LOBaseView.m in Sources */,
 				9E5E4A491B03A9B100E00F06 /* LOTextfield.m in Sources */,
 				9E5E4A4A1B03A9B100E00F06 /* LOTextView.m in Sources */,
+				9EC9F65F1C3E5E7D001476BA /* testView.m in Sources */,
 				9E5E4A451B03A9B100E00F06 /* LOCollectionView.m in Sources */,
 				9E5E4A481B03A9B100E00F06 /* LOTableView.m in Sources */,
 				9E9281981AF9D524003D3471 /* main.m in Sources */,
@@ -333,6 +432,7 @@
 		};
 		9E9281B61AF9D524003D3471 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D60324E45CBF51A8D706A386 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOUIKit/Info.plist;
@@ -344,6 +444,7 @@
 		};
 		9E9281B71AF9D524003D3471 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B71630976F6CCF50158ED0B4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LOUIKit/Info.plist;
