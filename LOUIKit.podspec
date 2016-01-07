@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "LOUIKit"
-  s.version      = '0.0.4'
+  s.version      = '0.0.5'
   s.summary      = "iOS UIKit extension" 
   s.homepage     = 'https://github.com/vivalalova/LOUIKit'
   s.license      = 'MIT License'
