@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT License'
   s.author       = { "vivalalova" => "vivalalova0@gmail.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/vivalalova/LOUIKit.git", :tag => '0.0.4' }
+  s.source       = { :git => "https://github.com/vivalalova/LOUIKit.git", :tag => '0.0.5' }
   s.source_files  = "LOUIKit/LOUIKit/*.{h,m}"
   s.framework   = 'UIKit'
   s.requires_arc = true
