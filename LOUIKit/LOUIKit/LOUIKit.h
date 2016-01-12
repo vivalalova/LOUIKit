@@ -15,7 +15,3 @@
 #import "LOTextView.h"
 #import "LOCollectionView.h"
 #import "LOTableView.h"
-
-@interface LOUIKit : NSObject
-
-@end

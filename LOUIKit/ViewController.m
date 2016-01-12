@@ -19,15 +19,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.gratView.gradientLayer.colors =  @[
-                                            [UIColor colorWithRed:0.99 green:0.82 blue:0.08 alpha:1],
-                                            [UIColor colorWithRed:0.56 green:0.08 blue:1 alpha:1]
-                                            ];
+    self.gratView.gradientColors = @[
+                                     [UIColor colorWithRed:0.99 green:0.82 blue:0.08 alpha:1],
+                                     [UIColor colorWithRed:0.56 green:0.08 blue:1 alpha:1]
+                                     ];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)btnPressed:(LOButton *)sender {
+    sender.lock = !sender.lock;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        sender.lock = !sender.lock;
+    });
 }
 
 @end

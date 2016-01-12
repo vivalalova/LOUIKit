@@ -9,14 +9,9 @@
 #import <UIKit/UIKit.h>
 @interface LOButton : UIButton
 
-@property (assign, nonatomic) IBInspectable BOOL circle;
-
-@property (strong, nonatomic) IBInspectable UIColor *borderColor;
-@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
-@property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
+@property (nonatomic, assign) BOOL lock;
+- (void)setLock:(BOOL)lock withTitle:(NSString *)title color:(UIColor *)color;
 
 - (void)setup;
 
-@property (nonatomic, assign) BOOL lock;
-- (void)setLock:(BOOL)lock withTitle:(NSString *)title color:(UIColor *)color;
 @end
