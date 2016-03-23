@@ -22,7 +22,8 @@
 @end
 
 @implementation LOCollectionView
-//@dynamic delegate;
+@synthesize delegate = delegate_;
+
 #define kContentOffset @"contentOffset"
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {

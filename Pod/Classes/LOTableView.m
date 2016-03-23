@@ -23,6 +23,7 @@
 @end
 
 @implementation LOTableView
+@synthesize delegate = delegate_;
 @synthesize refreshing;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
