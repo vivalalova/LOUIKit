@@ -6,13 +6,13 @@
 //  Copyright (c) 2016 vivalalova. All rights reserved.
 //
 
-#import "LOViewController.h"
+#import "ViewController.h"
 
-@interface LOViewController ()
+@interface ViewController ()
 
 @end
 
-@implementation LOViewController
+@implementation ViewController
 
 - (void)viewDidLoad
 {

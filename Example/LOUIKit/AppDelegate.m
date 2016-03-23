@@ -6,9 +6,9 @@
 //  Copyright (c) 2016 vivalalova. All rights reserved.
 //
 
-#import "LOAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation LOAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

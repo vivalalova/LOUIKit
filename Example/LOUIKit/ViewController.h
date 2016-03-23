@@ -6,8 +6,8 @@
 //  Copyright (c) 2016 vivalalova. All rights reserved.
 //
 
-@import UIKit;
+#import "LOViewController.h"
 
-@interface LOViewController : UIViewController
+@interface ViewController : LOViewController
 
 @end
