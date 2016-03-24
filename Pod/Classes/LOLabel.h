@@ -10,6 +10,11 @@
 
 @interface LOLabel : UILabel
 @property (assign, nonatomic) IBInspectable BOOL blur;
+@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
+@property (assign, nonatomic) IBInspectable UIColor *borderColor;
+
+@property (assign, nonatomic) IBInspectable BOOL circle;
+
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 @property (assign, nonatomic) IBInspectable CGRect padding;
 

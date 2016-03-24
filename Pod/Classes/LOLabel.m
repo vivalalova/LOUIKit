@@ -31,7 +31,11 @@ IB_DESIGNABLE
 }
 
 - (void)setup {
-    if (self.cornerRadius) {
+    if (self.circle) {
+        self.clipsToBounds = YES;
+        self.layer.masksToBounds = YES;
+        self.layer.cornerRadius = self.bounds.size.height/2;
+    }else if (self.cornerRadius) {
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
@@ -54,6 +58,16 @@ IB_DESIGNABLE
 - (void)drawTextInRect:(CGRect)rect {
     UIEdgeInsets insets = { self.padding.origin.x, self.padding.origin.y, self.padding.size.width, self.padding.size.height };
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
+}
+
+-(void)setBorderColor:(UIColor *)borderColor{
+    _borderColor = borderColor;
+    self.layer.borderColor = _borderColor.CGColor;
+}
+-(void)setBorderWidth:(CGFloat)borderWidth{
+    _borderWidth = borderWidth;
+    
+    self.layer.borderWidth = _borderWidth;
 }
 
 @end
