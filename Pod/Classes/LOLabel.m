@@ -9,29 +9,44 @@
 #import "LOLabel.h"
 #import "LOPrefixHeader.h"
 
-IB_DESIGNABLE
 @interface LOLabel ()
 
+@property (strong,nonatomic) UIVisualEffectView *blurredView;
 @end
-@implementation LOLabel {
+
+
+@implementation LOLabel
+
+//-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+//    self = [super initWithCoder:aDecoder];
+//    [self setup];
+//    
+//    return self;
+//}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    [self setup];
 }
 
-//from code
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
+
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    
+//    if (self) {
+//        [self setup];
+//    }
+//    return self;
+//}
 
 - (void)prepareForInterfaceBuilder {
+    [super prepareForInterfaceBuilder];
     [self setup];
 }
 
 - (void)setup {
-    if (self.circle) {
+    if (self.circle == YES) {
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.bounds.size.height/2;
@@ -41,18 +56,19 @@ IB_DESIGNABLE
         self.layer.cornerRadius = self.cornerRadius;
     }
     
-    if (self.blur && OSVersion >= 8.0) {
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        UIVisualEffectView *blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-        blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self addSubview:blurredView];
-        [self sendSubviewToBack:blurredView];
+    if (self.blur == YES) {
+//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//        UIVisualEffectView *blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//        blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+//        blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self addSubview:self.blurredView];
+        [self sendSubviewToBack:self.blurredView];
         
         self.backgroundColor = [UIColor clearColor];
-    } else if (self.blur && OSVersion < 8.0) {
-        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     }
+    
+    self.borderColor = self.borderColor;
+    self.borderWidth = self.borderWidth;
 }
 
 - (void)drawTextInRect:(CGRect)rect {
@@ -66,8 +82,18 @@ IB_DESIGNABLE
 }
 -(void)setBorderWidth:(CGFloat)borderWidth{
     _borderWidth = borderWidth;
-    
     self.layer.borderWidth = _borderWidth;
+}
+
+-(UIVisualEffectView *)blurredView{
+    if (!_blurredView) {
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        _blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+        _blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
+    
+    return _blurredView;
 }
 
 @end

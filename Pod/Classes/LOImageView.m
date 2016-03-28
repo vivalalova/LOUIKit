@@ -12,18 +12,19 @@
 IB_DESIGNABLE
 @interface LOImageView ()
 
+
 @end
 @implementation LOImageView
 
 //from code
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        [self setup];
-    }
-    return self;
-}
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    
+//    if (self) {
+//        [self setup];
+//    }
+//    return self;
+//}
 
 //from storyboard
 - (void)awakeFromNib {
@@ -32,7 +33,11 @@ IB_DESIGNABLE
 }
 
 - (void)setup {
-    if (self.cornerRadius) {
+    if (self.circle == YES) {
+        self.clipsToBounds = YES;
+        self.layer.masksToBounds = YES;
+        self.layer.cornerRadius = self.bounds.size.height/2;
+    }else if (self.cornerRadius) {
         self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;

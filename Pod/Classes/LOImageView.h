@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LOImageView : UIImageView
+
+@property (assign, nonatomic) IBInspectable BOOL circle;
 @property (strong, nonatomic) IBInspectable UIColor *borderColor;
 @property (assign, nonatomic) IBInspectable CGFloat borderWidth;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;

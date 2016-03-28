@@ -83,6 +83,13 @@
 
 #pragma mark - getter and setter
 
+-(NSUInteger)numberOfLine{
+    
+    float rows = (self.contentSize.height - self.textContainerInset.top - self.textContainerInset.bottom) / self.font.lineHeight;
+
+    return rows;
+}
+
 //-(UILabel *)placeholder{
 //
 //        placeHolderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0 + padding.origin.x,

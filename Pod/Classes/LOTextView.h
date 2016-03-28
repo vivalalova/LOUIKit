@@ -10,7 +10,9 @@
 IB_DESIGNABLE
 
 @interface LOTextView : UITextView
-@property (assign, nonatomic)    IBInspectable CGFloat cornerRadius;
+
+@property (assign, nonatomic) NSUInteger numberOfLine;
+@property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 //@property (assign, nonatomic) IBInspectable UIEdgeInsets edgeInset;
 //@property (strong,nonatomic) IBInspectable NSString* holderFontName;
 - (void)setup;
