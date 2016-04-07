@@ -22,8 +22,7 @@
 @end
 
 @implementation LOCollectionView
-@synthesize delegate = delegate_;
-
+//@dynamic delegate;
 #define kContentOffset @"contentOffset"
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -64,9 +63,9 @@
     }
 }
 
-//- (void)dealloc {
-//    [self removeObserver:self forKeyPath:kContentOffset];
-//}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:kContentOffset];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:kContentOffset]) {

@@ -18,7 +18,7 @@ IB_DESIGNABLE
 @property (assign, nonatomic) IBInspectable CGFloat borderWidth;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 
-@property (weak, nonatomic) id <LOCollectionViewDelegate,UICollectionViewDelegate> delegate;
+@property (weak, nonatomic) id <LOCollectionViewDelegate> delegate;
 @property (assign, nonatomic) IBInspectable BOOL pullRefreshAllowed;
 
 @property (assign, nonatomic) IBInspectable BOOL pushUpRefreshAllowed;
@@ -28,7 +28,7 @@ IB_DESIGNABLE
 - (NSIndexPath *)indexPathWithView:(UIView *)view;
 @end
 
-@protocol LOCollectionViewDelegate <UICollectionViewDelegate>
+@protocol LOCollectionViewDelegate <UITableViewDelegate>
 
 @optional
 - (void)LOCollectionViewDidStartRefreshAnimation:(LOCollectionView *)collectionView;
