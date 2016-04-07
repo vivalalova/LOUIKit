@@ -24,6 +24,7 @@
 
 @implementation LOTableView
 @synthesize refreshing;
+@dynamic delegate;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -60,10 +61,6 @@
         refreshControl = [[UIRefreshControl alloc] init];
         [self addSubview:refreshControl];
     }
-}
-
-- (void)dealloc {
-    [self removeObserver:self forKeyPath:kContentOffset];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
