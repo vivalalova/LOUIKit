@@ -26,7 +26,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"did select at index %d",indexPath.row);
+    NSLog(@"did select at index %d",(int)indexPath.row);
 }
 
 -(void)LOTableViewDidStartRefreshAnimation:(LOTableView *)tableView{
