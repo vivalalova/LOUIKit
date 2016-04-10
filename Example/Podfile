@@ -1,16 +1,6 @@
-source 'https://github.com/CocoaPods/Specs.git'
+# Uncomment this line to define a global platform for your project
 platform :ios, '8.0'
-use_frameworks!
 
-target 'LOUIKit_Example', :exclusive => true do
-  pod 'LOUIKit', :path => '../'
-end
+pod 'LOUIKit', :path => '../'
 
-target 'LOUIKit_Tests', :exclusive => true do
-  pod 'LOUIKit', :path => '../'
 
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'FBSnapshotTestCase'
-  pod 'Expecta+Snapshots'
-end
