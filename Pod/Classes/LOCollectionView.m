@@ -64,9 +64,9 @@
     }
 }
 
-//- (void)dealloc {
-//    [self removeObserver:self forKeyPath:kContentOffset];
-//}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:kContentOffset];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:kContentOffset]) {
