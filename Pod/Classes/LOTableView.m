@@ -159,7 +159,7 @@
     }
 }
 
--(void)setDelegate:(id<UITableViewDelegate> _Nullable)delegate{
+-(void)setDelegate:(id)delegate{
     [super setDelegate:delegate];
     _loDelegate = delegate;
 }
