@@ -151,7 +151,7 @@
     return indexPath;
 }
 
--(void)setDelegate:(__weak id<UITableViewDelegate> _Nullable)delegate{
+-(void)setDelegate:(id<UITableViewDelegate> _Nullable)delegate{
     [super setDelegate:delegate];
     _loDelegate = delegate;
 }
