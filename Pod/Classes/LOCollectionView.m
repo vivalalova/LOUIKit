@@ -19,8 +19,9 @@
     BOOL bottomRefreshing;
     BOOL lastStatusOfBottomRefreshControl;
 }
-@property (assign, nonatomic) BOOL refreshing;
 
+@property (weak, nonatomic) id <LOCollectionViewDelegate,UICollectionViewDelegate> loDelegate;
+@property (assign, nonatomic) BOOL refreshing;
 @end
 
 @implementation LOCollectionView
@@ -72,8 +73,8 @@
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
         if (self.pullRefreshAllowed == YES) {
             if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {                                                                               // 表示剛開始
-                if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartRefreshAnimation:)]) {
-                    [self.delegate LOCollectionViewDidStartRefreshAnimation:self];
+                if ([self.loDelegate respondsToSelector:@selector(LOCollectionViewDidStartRefreshAnimation:)]) {
+                    [self.loDelegate LOCollectionViewDidStartRefreshAnimation:self];
                 }
             }
             lastStatusOfRefreshControl = refreshControl.isRefreshing;
@@ -88,8 +89,8 @@
             }
             
             if (lastStatusOfBottomRefreshControl == NO && bottomRefreshing == YES && self.pushUpRefreshAllowed == YES) {
-                if ([self.delegate respondsToSelector:@selector(LOCollectionViewDidStartBottomRefresh:)]) {
-                    [self.delegate LOCollectionViewDidStartBottomRefresh:self];
+                if ([self.loDelegate respondsToSelector:@selector(LOCollectionViewDidStartBottomRefresh:)]) {
+                    [self.loDelegate LOCollectionViewDidStartBottomRefresh:self];
                 }
             }
             lastStatusOfBottomRefreshControl = bottomRefreshing;
@@ -145,5 +146,11 @@
     
     return indexPath;
 }
+
+-(void)setDelegate:(id<UITableViewDelegate>)delegate{
+    [super setDelegate:delegate];
+    _loDelegate = delegate;
+}
+
 
 @end

@@ -26,10 +26,6 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"forRowAtIndex: %d",(int)indexPath.row);
-}
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"did select row : %d",(int)indexPath.row);
 }

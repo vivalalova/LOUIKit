@@ -17,7 +17,6 @@ IB_DESIGNABLE
 @property (assign, nonatomic) IBInspectable CGFloat borderWidth;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 
-@property (weak, nonatomic) id <LOTableViewDelegate, UITableViewDelegate> delegate;
 
 @property (assign, nonatomic) IBInspectable BOOL pullRefreshAllowed;
 @property (assign, nonatomic) IBInspectable BOOL pushUpRefreshAllowed;

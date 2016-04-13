@@ -20,10 +20,16 @@
     BOOL lastStatusOfBottomRefreshControl;
 }
 
+@property (weak, nonatomic) id <LOTableViewDelegate, UITableViewDelegate> loDelegate;
+
+
 @end
 
 @implementation LOTableView
 @synthesize refreshing;
+
+
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -76,8 +82,8 @@
             
             if (lastStatusOfRefreshControl == NO && refreshControl.isRefreshing == YES) {// 表示剛開始
                 self.refreshing = YES;
-                if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartRefreshAnimation:)]) {
-                    [self.delegate LOTableViewDidStartRefreshAnimation:self];
+                if ([self.loDelegate respondsToSelector:@selector(LOTableViewDidStartRefreshAnimation:)]) {
+                    [self.loDelegate LOTableViewDidStartRefreshAnimation:self];
                 }
             }
             lastStatusOfRefreshControl = refreshControl.isRefreshing;
@@ -91,8 +97,8 @@
                 bottomRefreshing = YES;
                 
                 if (lastStatusOfBottomRefreshControl == NO) {
-                    if ([self.delegate respondsToSelector:@selector(LOTableViewDidStartBottomRefresh:)]) {
-                        [self.delegate LOTableViewDidStartBottomRefresh:self];
+                    if ([self.loDelegate respondsToSelector:@selector(LOTableViewDidStartBottomRefresh:)]) {
+                        [self.loDelegate LOTableViewDidStartBottomRefresh:self];
                     }
                 }
             }
@@ -149,4 +155,11 @@
         refreshing = newRefreshing;
     }
 }
+
+-(void)setDelegate:(id<UITableViewDelegate>)delegate{
+    [super setDelegate:delegate];
+    _loDelegate = delegate;
+}
+
+
 @end
