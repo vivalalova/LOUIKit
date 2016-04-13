@@ -8,7 +8,7 @@
 
 #import "ExampleTableViewViewController.h"
 #import <LOUIKit/LOUIKit.h>
-@interface ExampleTableViewViewController ()<LOTableViewDelegate,UITableViewDataSource>
+@interface ExampleTableViewViewController ()<LOTableViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -22,7 +22,12 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.textLabel.text =[NSString stringWithFormat:@"%d",(int)indexPath.row];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"forRowAtIndex: %d",(int)indexPath.row);
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -44,7 +49,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         NSLog(@"endBottomRefreshing");
         [tableView endBottomRefreshing];
-    });}
-
+    });
+}
 
 @end

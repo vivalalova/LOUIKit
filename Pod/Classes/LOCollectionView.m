@@ -9,6 +9,8 @@
 #import "LOCollectionView.h"
 #import "LOPrefixHeader.h"
 
+#define kContentOffset @"contentOffset"
+
 @interface LOCollectionView () {
     UIRefreshControl *refreshControl;
     BOOL lastStatusOfRefreshControl;
@@ -22,9 +24,6 @@
 @end
 
 @implementation LOCollectionView
-//@dynamic delegate;
-@synthesize delegate;
-#define kContentOffset @"contentOffset"
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -64,9 +63,9 @@
     }
 }
 
-//- (void)dealloc {
-//    [self removeObserver:self forKeyPath:kContentOffset];
-//}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:kContentOffset];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:kContentOffset]) {

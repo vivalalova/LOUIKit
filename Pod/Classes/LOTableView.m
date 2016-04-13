@@ -24,9 +24,6 @@
 
 @implementation LOTableView
 @synthesize refreshing;
-@synthesize delegate;
-//@dynamic delegate;
-
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -52,12 +49,12 @@
 }
 
 - (void)setUp {
-    self.clipsToBounds = YES;
+    self.clipsToBounds       = YES;
     self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = self.cornerRadius;
-    self.layer.borderColor = self.borderColor.CGColor;
-    self.layer.borderWidth = self.borderWidth;
-    
+    self.layer.cornerRadius  = self.cornerRadius;
+    self.layer.borderColor   = self.borderColor.CGColor;
+    self.layer.borderWidth   = self.borderWidth;
+
     /*pull and push refreshing*/
     if (!refreshControl && self.pullRefreshAllowed == YES) {
         refreshControl = [[UIRefreshControl alloc] init];
@@ -65,9 +62,9 @@
     }
 }
 
-//- (void)dealloc {
-//    [self removeObserver:self forKeyPath:kContentOffset];
-//}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:kContentOffset];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:kContentOffset]) {
@@ -85,7 +82,7 @@
             }
             lastStatusOfRefreshControl = refreshControl.isRefreshing;
         } else {
-            //            NSLog(@"enable 'pullRefreshAllowed' to allow pull refreshing");
+            //NSLog(@"enable 'pullRefreshAllowed' to allow pull refreshing");
         }
         
         //未有動畫/*上拉刷新*/
@@ -102,7 +99,7 @@
             
             lastStatusOfBottomRefreshControl = bottomRefreshing;
         } else {
-            //            NSLog(@"enable 'pushUpRefreshAllowed' to allow pull refreshing");
+            //NSLog(@"enable 'pushUpRefreshAllowed' to allow pull refreshing");
         }
     }
 }
