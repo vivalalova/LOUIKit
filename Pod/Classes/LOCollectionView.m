@@ -65,7 +65,11 @@
 }
 
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:kContentOffset];
+    @try{
+        [self removeObserver:self forKeyPath:kContentOffset];
+    }@catch (id anException){
+        
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -147,7 +151,7 @@
     return indexPath;
 }
 
--(void)setDelegate:(id<UITableViewDelegate>)delegate{
+-(void)setDelegate:(__weak id<UITableViewDelegate>)delegate{
     [super setDelegate:delegate];
     _loDelegate = delegate;
 }

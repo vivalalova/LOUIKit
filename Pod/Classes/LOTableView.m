@@ -69,9 +69,12 @@
 }
 
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:kContentOffset];
+    @try{
+        [self removeObserver:self forKeyPath:kContentOffset];
+    }@catch (id anException){
+        
+    }
 }
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:kContentOffset]) {
         //因為下拉時他自己會轉，所以不用叫他轉/*下拉刷新*/
@@ -156,7 +159,7 @@
     }
 }
 
--(void)setDelegate:(id<UITableViewDelegate>)delegate{
+-(void)setDelegate:(__weak id<UITableViewDelegate>)delegate{
     [super setDelegate:delegate];
     _loDelegate = delegate;
 }
