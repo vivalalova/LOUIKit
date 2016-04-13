@@ -9,22 +9,18 @@
 #import "LOImageView.h"
 #import "LOPrefixHeader.h"
 
-IB_DESIGNABLE
 @interface LOImageView ()
 
 
 @end
 @implementation LOImageView
 
-//from code
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithFrame:frame];
-//    
-//    if (self) {
-//        [self setup];
-//    }
-//    return self;
-//}
+-(instancetype)init{
+    self = [super init];
+    
+    
+    return self;
+}
 
 //from storyboard
 - (void)awakeFromNib {
