@@ -97,7 +97,7 @@
         
         self.backgroundColor = [UIColor clearColor];
         
-        self.clipsToBounds = YES;
+//        self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
     } else if (self.blur == YES && OSVersion < 8.0) {
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];

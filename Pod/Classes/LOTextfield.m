@@ -39,7 +39,7 @@ IB_DESIGNABLE
 
 - (void)setup {
     if (self.cornerRadius) {
-        self.clipsToBounds = YES;
+//        self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }

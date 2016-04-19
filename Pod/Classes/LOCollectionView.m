@@ -47,7 +47,7 @@
 - (void)setUp {
     /*cornerRadus & border*/ {
         if (self.cornerRadius) {
-            self.clipsToBounds = YES;
+//            self.clipsToBounds = YES;
             self.layer.masksToBounds = YES;
             self.layer.cornerRadius = self.cornerRadius;
         }

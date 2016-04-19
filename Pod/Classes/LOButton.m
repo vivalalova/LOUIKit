@@ -41,7 +41,7 @@ IB_DESIGNABLE
     [self drawRect:self.frame];
     
     if (self.cornerRadius || self.circle) {
-        self.clipsToBounds = YES;
+//        self.clipsToBounds = YES;
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
     }
