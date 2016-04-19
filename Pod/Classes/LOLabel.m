@@ -47,20 +47,12 @@
 
 - (void)setup {
     if (self.circle == YES) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.bounds.size.height/2;
     }else if (self.cornerRadius) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
     
     if (self.blur == YES) {
-//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-//        UIVisualEffectView *blurredView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-//        blurredView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-//        blurredView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.blurredView];
         [self sendSubviewToBack:self.blurredView];
         

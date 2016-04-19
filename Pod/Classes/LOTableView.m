@@ -55,8 +55,6 @@
 }
 
 - (void)setUp {
-//    self.clipsToBounds       = YES;
-    self.layer.masksToBounds = YES;
     self.layer.cornerRadius  = self.cornerRadius;
     self.layer.borderColor   = self.borderColor.CGColor;
     self.layer.borderWidth   = self.borderWidth;

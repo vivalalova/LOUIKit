@@ -41,8 +41,6 @@ IB_DESIGNABLE
     [self drawRect:self.frame];
     
     if (self.cornerRadius || self.circle) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
     }
     
@@ -81,8 +79,6 @@ IB_DESIGNABLE
             self.tempTitle = self.titleLabel.text;
             [self setTitle:@"" forState:UIControlStateNormal];
             
-            //            self.tempBorderWidth = self.layer.borderWidth;
-            //            self.layer.borderWidth = 0;
             indicator.color = color;
             
             self.userInteractionEnabled = NO;
@@ -95,8 +91,6 @@ IB_DESIGNABLE
             [self setTitle:self.tempTitle forState:UIControlStateNormal];
             self.tempTitle = nil;
             
-            //            self.layer.borderWidth = self.tempBorderWidth;
-            //            self.tempBorderWidth = 0;
             indicator.color = color;
             
             self.userInteractionEnabled = YES;
@@ -120,18 +114,9 @@ IB_DESIGNABLE
         indicator = [[UIActivityIndicatorView alloc] init];
         indicator.userInteractionEnabled = NO;
         indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-        //        [indicator startAnimating];
         [self addSubview:indicator];
     }
-    
-    //    indicator.color = self.borderColor;
-    
-    //    if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
-    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    //    } else {
-    //        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-    //    }
-    
+
     return indicator;
 }
 

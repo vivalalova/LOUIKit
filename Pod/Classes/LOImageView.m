@@ -30,12 +30,8 @@
 
 - (void)setup {
     if (self.circle == YES) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.bounds.size.height/2;
     }else if (self.cornerRadius) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
     

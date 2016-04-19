@@ -47,8 +47,6 @@
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
     
     if (self.cornerRadius) {
-//        self.clipsToBounds = YES;
-        self.layer.masksToBounds = YES;
         self.layer.cornerRadius = self.cornerRadius;
     }
     
