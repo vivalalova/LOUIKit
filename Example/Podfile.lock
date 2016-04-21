@@ -1,5 +1,5 @@
 PODS:
-  - LOUIKit (0.1.7)
+  - LOUIKit (0.1.15)
 
 DEPENDENCIES:
   - LOUIKit (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  LOUIKit: 8c101280cca7c15977dc94068bbe80a74eb71eb1
+  LOUIKit: 2ec87a59eb792f6269abc01b299d2b919690da03
 
 COCOAPODS: 0.39.0
