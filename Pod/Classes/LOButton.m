@@ -54,6 +54,14 @@ IB_DESIGNABLE
     [self setup];
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (self.cornerRadius || self.circle) {
+        self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
+    }
+}
+
 - (void)setLock:(BOOL)lock {
     UIColor *color;
     if ((self.superview && [self.superview.backgroundColor isEqual:UIColorFromRGB(0xffffff)])  || [self.backgroundColor isEqual:UIColorFromRGB(0xFFFFFF)]) {
