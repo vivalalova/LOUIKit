@@ -31,14 +31,16 @@
 }
 
 
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithFrame:frame];
-//    
-//    if (self) {
-//        [self setup];
-//    }
-//    return self;
-//}
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self setR];
+}
+
+- (void)setR {
+    if (self.cornerRadius || self.circle) {
+        self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
+    }
+}
 
 - (void)prepareForInterfaceBuilder {
     [super prepareForInterfaceBuilder];
@@ -46,11 +48,7 @@
 }
 
 - (void)setup {
-    if (self.circle == YES) {
-        self.layer.cornerRadius = self.bounds.size.height/2;
-    }else if (self.cornerRadius) {
-        self.layer.cornerRadius = self.cornerRadius;
-    }
+    [self setR];
     
     if (self.blur == YES) {
         [self addSubview:self.blurredView];
@@ -86,6 +84,13 @@
     }
     
     return _blurredView;
+}
+
+- (void)setCircle:(BOOL)circle {
+    _circle = circle;
+    if (_circle == YES) {
+        self.layer.cornerRadius = self.frame.size.height / 2;
+    }
 }
 
 @end

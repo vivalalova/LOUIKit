@@ -54,11 +54,18 @@ IB_DESIGNABLE
     [self setup];
 }
 
--(void)layoutSubviews{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     if (self.cornerRadius || self.circle) {
         self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
+    }
+}
+
+- (void)setCircle:(BOOL)circle {
+    _circle = circle;
+    if (_circle == YES) {
+        self.layer.cornerRadius = self.frame.size.height / 2;
     }
 }
 
@@ -124,7 +131,7 @@ IB_DESIGNABLE
         indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
         [self addSubview:indicator];
     }
-
+    
     return indicator;
 }
 

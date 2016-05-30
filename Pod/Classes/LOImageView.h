@@ -14,7 +14,7 @@
 @property (strong, nonatomic) IBInspectable UIColor *borderColor;
 @property (assign, nonatomic) IBInspectable CGFloat borderWidth;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
-
+@property (assign, nonatomic) IBInspectable BOOL renderingTemplate;
 - (void)setup;
 
 @end
