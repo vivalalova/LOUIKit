@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 @interface LOButton : UIButton
 
+//shadow
+@property (assign, nonatomic) IBInspectable CGFloat shadowRadius;
+@property (assign, nonatomic) IBInspectable CGFloat shadowOpacity;
+@property (assign, nonatomic) IBInspectable CGPoint shadowOffset;
+
 @property (assign, nonatomic) IBInspectable BOOL circle;
 
 @property (strong, nonatomic) IBInspectable UIColor *borderColor;

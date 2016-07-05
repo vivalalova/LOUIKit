@@ -49,15 +49,11 @@
 #pragma mark - private
 
 - (void)setShadow {
-    //performance
-    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
-    
-    self.layer.shadowRadius = self.cornerRadius;
-    //    self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = self.shadowOpacity;
     self.layer.shadowOffset = CGSizeMake(self.shadowOffset.x, self.shadowOffset.y);
+    self.layer.shadowRadius = self.shadowRadius;
+    self.layer.shadowOpacity = self.shadowOpacity;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
 }
-
 #pragma mark - setter & getter
 
 - (void)setCircle:(BOOL)circle {

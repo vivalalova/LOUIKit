@@ -24,7 +24,7 @@ IB_DESIGNABLE
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setup];
     }
@@ -37,16 +37,18 @@ IB_DESIGNABLE
 }
 
 - (void)setup {
+    [self setShadow];
+
     self.titleLabel.numberOfLines = 20;
     [self drawRect:self.frame];
-    
+
     if (self.cornerRadius || self.circle) {
         self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
     }
-    
+
     self.layer.borderColor = self.borderColor.CGColor;
     self.layer.borderWidth = self.borderWidth;
-    
+
     self.enabled = self.enabled;
 }
 
@@ -56,11 +58,24 @@ IB_DESIGNABLE
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     if (self.cornerRadius || self.circle) {
         self.layer.cornerRadius = self.circle ? self.frame.size.height / 2 : self.cornerRadius;
     }
+
+    [self setShadow];
 }
+
+#pragma mark - private
+
+- (void)setShadow {
+    self.layer.shadowOffset = CGSizeMake(self.shadowOffset.x, self.shadowOffset.y);
+    self.layer.shadowRadius = self.shadowRadius;
+    self.layer.shadowOpacity = self.shadowOpacity;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds cornerRadius:self.layer.cornerRadius].CGPath;
+}
+
+#pragma mark - setter
 
 - (void)setCircle:(BOOL)circle {
     _circle = circle;
@@ -76,38 +91,38 @@ IB_DESIGNABLE
     } else {
         color = [UIColor whiteColor];
     }
-    
+
     [self setLock:lock withTitle:self.tempTitle color:color];
 }
 
 - (void)setLock:(BOOL)lock withTitle:(NSString *)title color:(UIColor *)color {
     dispatch_async(dispatch_get_main_queue(), ^{
         _lock = lock;
-        
+
         self.tempTitle = title;
         if (_lock) {
             [self.indicator startAnimating];
-            
+
             self.tempImage = self.imageView.image;
             [self setImage:nil forState:UIControlStateNormal];
-            
+
             self.tempTitle = self.titleLabel.text;
             [self setTitle:@"" forState:UIControlStateNormal];
-            
+
             indicator.color = color;
-            
+
             self.userInteractionEnabled = NO;
         } else {
             [self.indicator stopAnimating];
-            
+
             [self setImage:self.tempImage forState:UIControlStateNormal];
             self.tempImage = nil;
-            
+
             [self setTitle:self.tempTitle forState:UIControlStateNormal];
             self.tempTitle = nil;
-            
+
             indicator.color = color;
-            
+
             self.userInteractionEnabled = YES;
         }
     });
@@ -131,8 +146,23 @@ IB_DESIGNABLE
         indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
         [self addSubview:indicator];
     }
-    
+
     return indicator;
+}
+
+- (void)setShadowOffset:(CGPoint)shadowOffset {
+    _shadowOffset = shadowOffset;
+    [self setShadow];
+}
+
+- (void)setShadowRadius:(CGFloat)shadowRadius {
+    _shadowRadius = shadowRadius;
+    [self setShadow];
+}
+
+- (void)setShadowOpacity:(CGFloat)shadowOpacity {
+    _shadowOpacity = shadowOpacity;
+    [self setShadow];
 }
 
 @end
