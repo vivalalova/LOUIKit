@@ -23,19 +23,23 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AFNetworkReachabilityStatusReachableON) name:@"AFNetworkReachabilityStatusReachableON" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AFNetworkReachabilityStatusReachableOFF) name:@"AFNetworkReachabilityStatusReachableOFF" object:nil];
+
+    if ((self.navigationController && self.navTintColor) ) {
+        self.navigationController.navigationBar.tintColor = self.navTintColor;
+    }
+
+    if ((self.navigationController && self.navBarTintColor) ) {
+        self.navigationController.navigationBar.barTintColor = self.navBarTintColor;
+    }
+
+    if (self.navigationController && self.navBarColorSameWithTintColor) {
+        self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:self.navigationController.navigationBar.tintColor};
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AFNetworkReachabilityStatusReachableON" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"AFNetworkReachabilityStatusReachableOFF" object:nil];
-    
-    //    [SVProgressHUD dismiss];
 }
 
 #pragma mark - reachability
