@@ -12,12 +12,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tableview.rowHeight = UITableViewAutomaticDimension;
     self.tableview.estimatedRowHeight = 100;
     self.tableview.tableFooterView = [[UIView alloc] init];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,6 +41,13 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    if (self.lightStatusBar) {
+        return UIStatusBarStyleLightContent;
+    }
+    return UIStatusBarStyleDefault;
 }
 
 #pragma mark - reachability
