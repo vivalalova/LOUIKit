@@ -13,6 +13,19 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    
+    if ((self && self.navTintColor) ) {
+        self.navigationBar.tintColor = self.navTintColor;
+    }
+    
+    if ((self && self.navBarTintColor) ) {
+        self.navigationBar.barTintColor = self.navBarTintColor;
+    }
+    
+    if (self && self.navBarColorSameWithTintColor) {
+        self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:self.navigationBar.tintColor};
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{

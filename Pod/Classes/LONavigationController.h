@@ -11,4 +11,8 @@ IB_DESIGNABLE
 @interface LONavigationController : UINavigationController
 @property (assign,nonatomic) IBInspectable BOOL lightStatusBar;
 
+@property (strong,nonatomic) IBInspectable UIColor* navTintColor;
+@property (strong,nonatomic) IBInspectable UIColor* navBarTintColor;
+@property (assign,nonatomic) IBInspectable BOOL navBarColorSameWithTintColor;
+
 @end
