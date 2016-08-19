@@ -15,6 +15,8 @@ IB_DESIGNABLE
 
 @property (assign,nonatomic) IBInspectable BOOL lightStatusBar;
 
+@property (assign,nonatomic) IBInspectable BOOL navigationBarHidden;
+
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 

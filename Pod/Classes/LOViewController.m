@@ -17,25 +17,30 @@
     self.tableview.tableFooterView = [[UIView alloc] init];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-
-    [self setNeedsStatusBarAppearanceUpdate];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-
-    if ((self.navigationController && self.navTintColor) ) {
+    
+    if (self.navigationController && self.navTintColor) {
         self.navigationController.navigationBar.tintColor = self.navTintColor;
     }
-
-    if ((self.navigationController && self.navBarTintColor) ) {
+    
+    if (self.navigationController && self.navBarTintColor) {
         self.navigationController.navigationBar.barTintColor = self.navBarTintColor;
     }
-
+    
     if (self.navigationController && self.navBarColorSameWithTintColor) {
-        self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:self.navigationController.navigationBar.tintColor};
+        self.navigationController.navigationBar.titleTextAttributes = @{ NSForegroundColorAttributeName : self.navigationController.navigationBar.tintColor };
     }
+    
+    if (self.navigationController) {
+        self.navigationController.navigationBarHidden = self.navigationBarHidden;
+    }
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -43,7 +48,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    NSLog(@"%d",self.lightStatusBar);
     if (self.lightStatusBar) {
         return UIStatusBarStyleLightContent;
     }
