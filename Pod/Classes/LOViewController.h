@@ -13,6 +13,9 @@ IB_DESIGNABLE
 @property (strong,nonatomic) IBInspectable UIColor* navBarTintColor;
 @property (assign,nonatomic) IBInspectable BOOL navBarColorSameWithTintColor;
 
+/**
+ *  Set UIViewControllerBasedStatusBarAppearance to YES in info.plist
+ */
 @property (assign,nonatomic) IBInspectable BOOL lightStatusBar;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
