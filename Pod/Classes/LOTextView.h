@@ -11,9 +11,12 @@ IB_DESIGNABLE
 
 @interface LOTextView : UITextView
 
-@property (assign, nonatomic,readonly) NSUInteger numberOfLine;
+@property (assign, nonatomic, readonly) NSUInteger numberOfLine;
 @property (assign, nonatomic) IBInspectable CGFloat cornerRadius;
 @property (strong, nonatomic) IBInspectable NSString *placeHolder;
+
+@property (strong, nonatomic) IBInspectable UIColor *borderColor;
+@property (assign, nonatomic) IBInspectable CGFloat borderWidth;
 
 //@property (assign, nonatomic) IBInspectable UIEdgeInsets edgeInset;
 //@property (strong,nonatomic) IBInspectable NSString* holderFontName;
