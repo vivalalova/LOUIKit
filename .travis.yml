@@ -18,5 +18,5 @@ notifications:
   slack: vivalalova:uPl6tHqIgkVqcOQKFoDPYPJG
   email: false
 script:
-- set -o pipefail && xctool test -workspace Example/example.xcworkspace -scheme example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild test -workspace Example/example.xcworkspace -scheme example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
