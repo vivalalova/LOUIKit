@@ -3,7 +3,5 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-podfile: Example/Podfile
-before_install:
 script:
 - pod lib lint
