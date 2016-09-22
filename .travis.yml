@@ -5,14 +5,18 @@
 osx_image: xcode7.3
 language: objective-c
 cache: cocoapods
+xcode_workspace: Example/example.xcworkspace
+xcode_scheme: example
+xcode_sdk: iphonesimulator9.3
 podfile: Example/Podfile
 
 before_install:
+- rvm install ruby-2.2.2 #cocoapods 1.0.0 requirement not yet supported ootb by travis
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
 notifications:
   slack: vivalalova:uPl6tHqIgkVqcOQKFoDPYPJG
   email: false
 script:
-- set -o pipefail && xcodebuild test -workspace Example/example.xcworkspace -scheme example-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xctool test -workspace Example/example.xcworkspace -scheme example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
