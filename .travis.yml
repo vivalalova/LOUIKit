@@ -5,6 +5,5 @@
 language: objective-c
 podfile: Example/Podfile
 before_install:
- - pod install
 script:
 - pod lib lint
