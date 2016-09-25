@@ -6,43 +6,49 @@
 //
 //
 
+
+
+
 import UIKit
-@IBDesignable
-public class LOView: UIView {
+
+@IBDesignable public class LOView: UIView {
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
-    public override func prepareForInterfaceBuilder() {
+    open override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         self.setup()
     }
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setShadow()
+    }
+    
     func setup() {
-//        self.setShadow()
+        self.setShadow()
     }
     
     func setShadow() {
-        self.layer.shadowRadius = self.shadowRadius!
+        self.layer.shadowRadius = self.shadowRadius
         self.layer.shadowOffset = self.shadowOffset!
         self.layer.shadowOpacity = self.shadowOpacity!
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.shadowRadius!).cgPath
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.shadowRadius).cgPath
     }
 }
-
 extension LOView:LOViewProtocol {
-    @IBInspectable var shadowRadius:CGFloat?{
+    @IBInspectable public var shadowRadius:CGFloat {
         get{
-            return self.layer.shadowRadius
+            return self.getShadowRadius()
         }
-        set{
-            self.layer.shadowRadius = newValue ?? 0
+        set {
+            self.setShadowRadius(newValue: newValue)
         }
     }
     
@@ -60,7 +66,7 @@ extension LOView:LOViewProtocol {
             return self.layer.shadowOffset
         }
         set{
-            self.layer.shadowOffset = newValue ?? CGSize()
+            self.layer.shadowOffset = newValue ?? CGSize(width: 0, height: 0)
         }
     }
     
@@ -69,9 +75,10 @@ extension LOView:LOViewProtocol {
             return self.layer.cornerRadius == self.frame.size.height / 2
         }
         set{
-//            if circle! {
-            self.layer.cornerRadius = self.frame.size.height / 2
-//            }
+            circle = newValue
+            if circle == true {
+                self.layer.cornerRadius = self.frame.size.height / 2
+            }
         }
     }
     
@@ -80,7 +87,7 @@ extension LOView:LOViewProtocol {
             return self.layer.cornerRadius
         }
         set{
-            if circle == false {
+            if circle != true {
                 self.layer.cornerRadius = newValue ?? 0
             }
         }
@@ -97,28 +104,10 @@ extension LOView:LOViewProtocol {
     
     @IBInspectable var borderWidth:CGFloat?{
         get{
-            return borderWidth
+            return self.layer.borderWidth
         }
         set{
             self.layer.borderWidth = newValue ?? 0
         }
     }
-    
-//    @IBInspectable var blurStyle:NSInteger?{
-//        get{
-//            return blurStyle
-//        }
-//        set{
-//            
-//        }
-//    }
-//    
-//    @IBInspectable var blur:Bool?{
-//        get{
-//            return blur
-//        }
-//        set{
-//            
-//        }
-//    }
 }
