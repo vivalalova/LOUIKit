@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 public class LOView: UIView {
     
     required public init?(coder aDecoder: NSCoder) {
@@ -25,7 +25,7 @@ public class LOView: UIView {
     }
     
     func setup() {
-        self.setShadow()
+//        self.setShadow()
     }
     
     func setShadow() {
@@ -66,14 +66,12 @@ extension LOView:LOViewProtocol {
     
     @IBInspectable var circle:Bool?{
         get{
-            return circle
+            return self.layer.cornerRadius == self.frame.size.height / 2
         }
         set{
-            circle = newValue
-            
-            if circle ?? false {
-                self.layer.cornerRadius = self.frame.size.height / 2
-            }
+//            if circle! {
+            self.layer.cornerRadius = self.frame.size.height / 2
+//            }
         }
     }
     
