@@ -8,59 +8,59 @@
 
 import UIKit
 
-extension UIView:LOViewIBInspectable {
+extension UIView: LOViewIBInspectable {
 
-    @IBInspectable var borderColor:UIColor {
-        get{
+    @IBInspectable var borderColor: UIColor {
+        get {
             let cgColor = self.layer.borderColor ?? UIColor.clear.cgColor
             return UIColor(cgColor: cgColor)
         }
-        set{
+        set {
             self.layer.borderColor = newValue.cgColor
         }
     }
 
-    @IBInspectable var borderWidth:CGFloat {
-        get{
+    @IBInspectable var borderWidth: CGFloat {
+        get {
             return self.layer.borderWidth
         }
-        set{
+        set {
             self.layer.borderWidth = newValue
         }
     }
 
-    @IBInspectable var shadowRadius:CGFloat {
-        get{
+    @IBInspectable var shadowRadius: CGFloat {
+        get {
             return self.layer.shadowRadius
         }
-        set{
+        set {
             self.layer.shadowRadius = newValue
         }
     }
 
-    @IBInspectable var shadowOpacity:Float {
-        get{
+    @IBInspectable var shadowOpacity: Float {
+        get {
             return self.layer.shadowOpacity
         }
-        set{
+        set {
             self.layer.shadowOpacity = newValue
         }
     }
 
-    @IBInspectable var shadowOffset:CGSize {
-        get{
+    @IBInspectable var shadowOffset: CGSize {
+        get {
             return self.layer.shadowOffset
         }
-        set{
+        set {
             self.layer.shadowOffset = newValue
         }
     }
 
-    @IBInspectable var cornerRadius:CGFloat {
-        get{
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
             return self.layer.cornerRadius
         }
-        set{
+        set {
             self.layer.cornerRadius = newValue
         }
     }
