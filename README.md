@@ -1,6 +1,4 @@
 # LOUIKit
-
-[![CI Status](http://img.shields.io/travis/vivalalova/LOUIKit.svg?style=flat)](https://travis-ci.org/vivalalova/LOUIKit)
 [![Version](https://img.shields.io/cocoapods/v/LOUIKit.svg?style=flat)](http://cocoapods.org/pods/LOUIKit)
 [![License](https://img.shields.io/cocoapods/l/LOUIKit.svg?style=flat)](http://cocoapods.org/pods/LOUIKit)
 [![Platform](https://img.shields.io/cocoapods/p/LOUIKit.svg?style=flat)](http://cocoapods.org/pods/LOUIKit)
